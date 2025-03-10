@@ -10,8 +10,6 @@ const schema = z.object({
 
   GOOGLE_CLIENT_ID: z.string(),
   GOOGLE_CLIENT_SECRET: z.string(),
-  // GITHUB_ID: z.string(),
-  // GITHUB_SECRET: z.string(),
 });
 
 export type Environment = z.infer<typeof schema>;

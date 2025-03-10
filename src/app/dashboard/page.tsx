@@ -1,9 +1,9 @@
-import { dbConnection } from "@/lib/database/connection";
+import { getConnection } from "@/lib/database/connection";
 
 export default async function Dashbord() {
-  console.log("before query");
-  const res = await dbConnection.selectFrom("user").selectAll().execute();
-  console.log("after query", res);
+  const dbConn = await getConnection();
 
-  return <div>Dashboard</div>;
+  const res = await dbConn.selectFrom("user").selectAll().execute();
+
+  return <div>{JSON.stringify(res)}</div>;
 }

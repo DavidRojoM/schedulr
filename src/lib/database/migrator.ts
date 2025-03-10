@@ -2,15 +2,20 @@ import * as path from "path";
 import { promises as fs } from "fs";
 import { Kysely, Migrator, FileMigrationProvider } from "kysely";
 import { UnknownAny } from "../types/types";
+import { fileURLToPath } from "url";
 
 export async function migrateToLatest(db: Kysely<UnknownAny>) {
   console.log("migrating to latest version");
+
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = path.dirname(__filename);
+
   const migrator = new Migrator({
     db,
     provider: new FileMigrationProvider({
       fs,
       path,
-      migrationFolder: path.join("src", "lib", "database", "migrations"),
+      migrationFolder: path.join(__dirname, "migrations"),
     }),
   });
 
@@ -29,6 +34,4 @@ export async function migrateToLatest(db: Kysely<UnknownAny>) {
     console.error(error);
     process.exit(1);
   }
-
-  await db.destroy();
 }
