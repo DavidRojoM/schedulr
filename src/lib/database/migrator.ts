@@ -21,11 +21,15 @@ export async function migrateToLatest(db: Kysely<UnknownAny>) {
 
   const { error, results } = await migrator.migrateToLatest();
 
-  results?.forEach((it) => {
-    if (it.status === "Success") {
-      console.log(`migration "${it.migrationName}" was executed successfully`);
-    } else if (it.status === "Error") {
-      console.error(`failed to execute migration "${it.migrationName}"`);
+  results?.forEach((migrationResult) => {
+    if (migrationResult.status === "Success") {
+      console.log(
+        `migration "${migrationResult.migrationName}" was executed successfully`
+      );
+    } else if (migrationResult.status === "Error") {
+      console.error(
+        `failed to execute migration "${migrationResult.migrationName}"`
+      );
     }
   });
 
