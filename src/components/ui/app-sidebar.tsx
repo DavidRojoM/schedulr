@@ -33,7 +33,7 @@ const items: SidebarItem[] = [
     type: "link",
     title: "Home",
     icon: HomeIcon,
-    url: "/",
+    url: "/dashboard",
   },
 ];
 
@@ -42,8 +42,10 @@ export function AppSidebar() {
   const { data: session } = useSession();
 
   return (
-    <Sidebar>
-      <SidebarHeader>Test</SidebarHeader>
+    <Sidebar collapsible="icon">
+      <SidebarHeader>
+        <h1 className="group-data-[collapsible=icon]:hidden">Schedulr</h1>
+      </SidebarHeader>
       <SidebarContent>
         <SidebarMenu>
           {items.map((item) => (
