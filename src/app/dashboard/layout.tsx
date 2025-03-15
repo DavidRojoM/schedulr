@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import { SidebarProvider, SidebarTrigger } from "@/components/shadcn/sidebar";
-import { AppSidebar } from "@/components/ui/app-sidebar";
-import AppSessionProvider from "@/components/ui/app-session-provider";
+import { SidebarProvider, SidebarTrigger } from "~/components/ui/sidebar";
+import AppSessionProvider from "../_components/ui/app-session-provider";
+import { AppSidebar } from "../_components/ui/app-sidebar";
 
 export const metadata: Metadata = {
   title: "Dashboard",
