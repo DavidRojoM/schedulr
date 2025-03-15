@@ -86,7 +86,7 @@ export function AppSidebar() {
             Logout
           </button>
         ) : (
-          <button onClick={() => signIn("google", {})}>Login</button>
+          <button onClick={() => signIn()}>Login</button>
         )}
       </SidebarFooter>
     </Sidebar>
